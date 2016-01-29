@@ -7,12 +7,12 @@ dep_dir = dep/
 asm_dir = asm/
 lib_dir = lib/
 
-libraries = -lSDL2 -lGL -lHorde3D -lsquirrel -lsqstdlib
-def_c_options = -isystem./include/ -isystem./include/SDL2/ -std=c++11 -Wall -D_SQ64 -DSQUSEDOUBLE
+libraries = -lSDL2 -lGL -lHorde3D -lsquirrel -lsqstdlib -ldl
+def_c_options = -isystem./include/ -isystem./include/SDL2/ -pthread -std=c++11 -Wall -D_SQ64 -DSQUSEDOUBLE
 
-debug_binary = bin/debug/dlrts
+debug_binary = bin/debug/texgen
 debug_dir = bin/debug/
-release_binary = bin/release/dlrts
+release_binary = bin/release/texgen
 release_dir = bin/release/
 
 h3dsdk = Horde3D_SDK_1.0.0_Beta5/
@@ -23,7 +23,7 @@ sqlib = $(squirrel)lib/libsquirrel.a
 sqstdlib = $(squirrel)lib/libsqstdlib.a
 SDL_dir = SDL2-2.0.4/
 
-SDL_libfiles = libSDL2.so,libSDL2-2.0.so.0,libSDL2-2.0.so.0.4.0
+SDL_libfiles = {libSDL2.so,libSDL2-2.0.so.0,libSDL2-2.0.so.0.4.0}
 
 ifeq ($(target),debug)
     binary = $(debug_binary)

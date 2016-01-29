@@ -3,7 +3,7 @@
 -include make_config
 
 #rule for generating binary
-$(binary): folders $(dep_files) $(header_files) $(bin_dir)libHorde3D.so $(lib_dir)libsquirrel.a $(bin_dir)libSDL2.so content
+$(binary): folders $(dep_files) $(header_files) $(bin_dir)libHorde3D.so $(lib_dir)libsquirrel.a $(lib_dir)libSDL2.a content
 	@rm -f $(logfile)
 	@#cd content && $(MAKE) target=../$(content_dir) --no-print-directory
 	$(MAKE) -f build.makefile -j 2 --no-print-directory 2>$(logfile); cat $(logfile);
@@ -37,11 +37,11 @@ $(lib_dir)libsquirrel.a:
 	cp -f $(sqstdlib) $(lib_dir)libsqstdlib.a
 	cp -f $(squirrel)include/*h include/squirrel/
 
-$(bin_dir)libSDL2.so:
-	cd $(SDL_dir) && ./configure && $(MAKE)
-	mkdir -p include/SDL2
-	cp -f $(SDL_dir)/include/*.h include/SDL2/
-	cp -f $(SDL_dir)/build/.libs/{$(SDL_libfiles)} $(bin_dir)
+$(lib_dir)libSDL2.a:
+	@mkdir -p SDL2/build include/SDL2
+	cd SDL2/build && cmake -G "Unix Makefiles" ../$(SDL_dir) && make SDL2-static
+	cp -f SDL2/$(SDL_dir)include/* include/SDL2/
+	cp -f SDL2/build/libSDL2.a $(lib_dir)
 
 #rule for generating assembly code
 asm: $(asm_files)
