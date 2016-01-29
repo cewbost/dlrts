@@ -1,0 +1,3 @@
+<Material link="h_map_general.xml" class="HUD">
+    <Shader source="navmesh.shader"/>
+</Material>

@@ -1,0 +1,5 @@
+<Material class="Translucent" link="h_map_general.xml">
+	<Shader source="water.shader"/>
+	<Sampler name="normalMap" map="waves_nmap.png"/>
+	<Uniform name="wavePos" a="0.0"/>
+</Material>

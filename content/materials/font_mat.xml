@@ -1,0 +1,4 @@
+<Material>
+	<Shader source="text.shader"/>
+	<Sampler name="albedoMap" map="font.png"/>
+</Material>

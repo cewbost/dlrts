@@ -1,0 +1,26 @@
+SQUIRREL= ..
+
+OUT= $(SQUIRREL)/bin/sq
+INCZ= -I$(SQUIRREL)/include -I. -I$(SQUIRREL)/sqlibs
+LIBZ= -L$(SQUIRREL)/lib 
+
+ifeq ($(readline),true)
+	DEF= -DREADLINE
+	LIB= -lsquirrel -lsqstdlib -lreadline -lhistory
+else
+	LIB= -lsquirrel -lsqstdlib
+endif
+
+OBJS= sq.o
+	
+SRCS= sq.c
+	
+	
+sq32:
+	g++ -O2 -s -fno-exceptions -fno-rtti -o $(OUT) $(SRCS) $(INCZ) $(LIBZ) $(LIB) $(DEF)
+
+sqprof:
+	g++ -O2 -pg -fno-exceptions -fno-rtti -pie -gstabs -g3 -o $(OUT) $(SRCS) $(INCZ) $(LIBZ) $(LIB) $(DEF)
+	
+sq64:
+	g++ -O2 -s -m64 -fno-exceptions -fno-rtti -D_SQ64 -DSQUSEDOUBLE -o $(OUT) $(SRCS) $(INCZ) $(LIBZ) $(LIB) $(DEF)

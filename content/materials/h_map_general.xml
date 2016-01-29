@@ -1,0 +1,6 @@
+<Material>
+	<Sampler name="heightMap" map="_heightmap"/>
+  <Sampler name="visionMap" map="_visionmap"/>
+  <Uniform name="vision_phase" a="0.0"/>
+	<Uniform name="hmap_size" a="0.0" b="0.0"/>
+</Material>

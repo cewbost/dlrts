@@ -1,0 +1,4 @@
+<Material>
+	<Shader source="gui.shader"/>
+	<Sampler name="albedoMap" map="gui.png"/>
+</Material>

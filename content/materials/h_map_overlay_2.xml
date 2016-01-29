@@ -1,0 +1,4 @@
+<Material class="HUD" link="h_map_overlay.xml">
+	<ShaderFlag name="_F01_Radial"/>
+	<Shader source="hmap_overlay.shader"/>
+</Material>

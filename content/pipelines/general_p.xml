@@ -1,0 +1,43 @@
+<Pipeline>
+  <Setup>
+    <RenderTarget id="GBUFFER" depthBuf="true" numColBufs="3" format="RGBA16F"/>
+  </Setup>
+	<CommandQueue>
+    <Stage id="SolidGeo">
+      <SwitchTarget target="GBUFFER"/>
+      <ClearTarget depthBuf="true" colBuf0="true" colBuf1="true" colBuf2="true"/>
+      <DrawGeometry context="ATTRIB_PASS" class="Terrain"/>
+      <DrawGeometry context="ATTRIB_PASS" class="Solid"/>
+    </Stage>
+    <Stage id="Lighting">
+      <SwitchTarget target=""/>
+      <ClearTarget depthBuf="true" colBuf0="true"/>
+      <BindBuffer sampler="gColorMap" sourceRT="GBUFFER" bufIndex="0"/>
+      <BindBuffer sampler="gCoordMap" sourceRT="GBUFFER" bufIndex="1"/>
+      <BindBuffer sampler="gNormalMap" sourceRT="GBUFFER" bufIndex="2"/>
+      <BindBuffer sampler="gDepthBuf" sourceRT="GBUFFER" bufIndex="32"/>
+      <DrawQuad material="deferred.xml" context="AMBIENT"/>
+      <DoDeferredLightLoop context="LIGHTING"/>
+      <UnbindBuffers/>
+    </Stage>
+    <Stage id="Translucent">
+      <DrawGeometry context="WATER" class="Translucent"/>
+    </Stage>
+    <Stage id="HUD">
+      <SwitchTarget target=""/>
+      <DrawGeometry context="GENERAL" class="HUD"/>
+      <DrawGeometry context="MODEL" class="Model"/>
+      <DrawOverlays context="OVERLAY"/>
+    </Stage>
+		<!--Stage id="General">
+			<SwitchTarget target=""/>
+			<ClearTarget depthBuf="true" colBuf0="true"/>
+      <DrawQuad material="deferred.xml" context="LIGHTING"/>
+			<!--DrawGeometry context="HEIGHT_MAP" class="Solid"/-->
+			<!--DrawGeometry context="WATER" class="Translucent"/-->
+			<!--DrawGeometry context="GENERAL" class="HUD"/-->
+			<!--DrawGeometry context="MODEL" class="Model"/-->
+			<!--DrawOverlays context="OVERLAY"/-->
+		<!--/Stage-->
+	</CommandQueue>
+</Pipeline>

@@ -1,0 +1,72 @@
+{
+	"material": "overlay.xml",
+	"class": "stdgui",
+	"font": "font_mat.xml"
+	"body": {
+		"resolution": 1,
+		"frame": {
+			"left": 0,
+			"right": 16,
+			"top": 0,
+			"bottom": 16,
+		},
+		"body": {
+			"left": 4,
+			"right": 12,
+			"top": 4,
+			"bottom": 12,
+		},
+	}
+	"head": {
+		"resolution": 1,
+		"frame": {
+			"left": 16,
+			"right": 32,
+			"top": 0,
+			"bottom": 16,
+		},
+		"body": {
+			"left": 20,
+			"right": 28,
+			"top": 4,
+			"bottom": 12,
+		},
+	}
+	"button": {
+		"resolution": 1,
+		"frame": {
+			"left": 0,
+			"right": 16,
+			"top": 16,
+			"bottom": 32,
+		},
+		"body": {
+			"left": 4,
+			"right": 12,
+			"top": 20,
+			"bottom": 28,
+		},
+		"active_state": {
+			"x_shift": 16,
+			"y_shift": 0,
+		},
+		"excited_state": {
+			"x_shift": 32,
+			"y_shift": 0,
+		}
+		"excited_active_state": {
+			"x_shift": 48,
+			"y_shift": 0,
+		},
+	},
+	"scroll_bar": {
+		"resolution": 1,
+		"wrap": 1,
+		"body": {
+			"left": 33,
+			"right": 47,
+			"top": 1,
+			"bottom": 15,
+		},
+	}
+}

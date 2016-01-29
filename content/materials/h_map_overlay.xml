@@ -1,0 +1,3 @@
+<Material link="h_map_general.xml">
+	<Uniform name="HiliteColor" a="0.0" b="1.0" c="0.5" d="0.2"/>
+</Material>

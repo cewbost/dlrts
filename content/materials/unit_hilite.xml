@@ -1,0 +1,6 @@
+<Material class="HUD" link="h_map_general.xml">
+	<ShaderFlag name="_F01_Radial"/>
+	<ShaderFlag name="_F02_Circle"/>
+	<Shader source="hmap_overlay.shader"/>
+	<Uniform name="HiliteColor" a="0.4" b="1.0" c="0.7" d="0.4"/>
+</Material>

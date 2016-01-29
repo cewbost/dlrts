@@ -1,0 +1,60 @@
+#make config file
+
+CC = g++
+
+src_dir = src/
+dep_dir = dep/
+asm_dir = asm/
+lib_dir = lib/
+
+libraries = -lSDL2 -lGL -lHorde3D -lsquirrel -lsqstdlib
+def_c_options = -isystem./include/ -isystem./include/SDL2/ -std=c++11 -Wall -D_SQ64 -DSQUSEDOUBLE
+
+debug_binary = bin/debug/dlrts
+debug_dir = bin/debug/
+release_binary = bin/release/dlrts
+release_dir = bin/release/
+
+h3dsdk = Horde3D_SDK_1.0.0_Beta5/
+h3dso = $(h3dsdk)Horde3D/Source/Horde3DEngine/libHorde3D.so
+h3dinc = $(h3dsdk)Horde3D/Bindings/C++/Horde3D.h
+squirrel = SQUIRREL3/
+sqlib = $(squirrel)lib/libsquirrel.a
+sqstdlib = $(squirrel)lib/libsqstdlib.a
+SDL_dir = SDL2-2.0.4/
+
+SDL_libfiles = libSDL2.so,libSDL2-2.0.so.0,libSDL2-2.0.so.0.4.0
+
+ifeq ($(target),debug)
+    binary = $(debug_binary)
+    obj_dir = obj/debug/
+    l_options = -pthread
+    c_options = $(def_c_options) -g
+	content_dir = bin/debug/
+	bin_dir = $(debug_dir)
+else
+	binary = $(release_binary)
+    obj_dir = obj/release/
+    l_options = -s -pthread
+    c_options = $(def_c_options) -O3 -DNDEBUG
+	content_dir = bin/release/
+	bin_dir = $(release_dir)
+endif
+
+files = $(shell find $(src_dir))
+src_files = $(filter %.cpp, $(files))
+header_files = $(filter %.h, $(files))
+obj_files = $(patsubst $(src_dir)%.cpp, $(obj_dir)%.o, $(src_files))
+dep_files = $(patsubst $(src_dir)%.cpp, $(dep_dir)%.d, $(src_files))
+asm_files = $(patsubst $(src_dir)%.cpp, $(asm_dir)%.s, $(src_files))
+
+#files = $(shell ls src -B | grep .cpp)
+#src_files = $(addprefix $(src_dir),$(files))
+#header_files = $(addprefix $(src_dir),$(subst .cpp,.h,$(files)))
+#obj_files = $(addprefix $(obj_dir),$(subst .cpp,.o,$(files)))
+#dep_files = $(addprefix $(dep_dir),$(subst .cpp,.d,$(files)))
+#asm_files = $(addprefix $(asm_dir),$(subst .cpp,.s,$(files)))
+
+logfile = build.log
+
+export target

@@ -1,0 +1,13 @@
+<Pipeline>
+	<CommandQueue>
+		<Stage id="General">
+			<SwitchTarget target=""/>
+			<ClearTarget depthBuf="true" colBuf0="true"/>
+			<DrawGeometry context="HEIGHT_MAP" class="Solid"/>
+			<DrawGeometry context="WATER" class="Translucent"/>
+			<DrawGeometry context="GENERAL" class="HUD"/>
+			<DrawGeometry context="MODEL" class="Model"/>
+			<DrawOverlays context="OVERLAY"/>
+		</Stage>
+	</CommandQueue>
+</Pipeline>

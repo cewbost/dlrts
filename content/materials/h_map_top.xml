@@ -1,0 +1,6 @@
+<Material class="Terrain" link="h_map_general.xml">
+  <ShaderFlag name="_F01_NoTPT"/>
+	<Shader source="terrain.shader"/>
+	<Sampler name="topTex" map="ground.png"/>
+	<Sampler name="topNormalMap" map="grass_nmap.png"/>
+</Material>

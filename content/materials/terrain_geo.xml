@@ -1,0 +1,7 @@
+<Material class="Solid">
+	<Shader source="terrain_geo.shader"/>
+	<Sampler name="topTex" map="ground.png"/>
+	<Sampler name="wallTex" map="cobblestone.png"/>
+	<Sampler name="wallNormalMap" map="cobblestone_nmap.png"/>
+	<Sampler name="topNormalMap" map="grass_nmap.png"/>
+</Material>
