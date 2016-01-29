@@ -125,7 +125,7 @@ int AppCtrl::init(const char* _app_path)
   #else
   if((screen = SDL_CreateWindow("dlrts",
     SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-    screen_w, screen_h, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP)) == nullptr)
+    screen_w, screen_h, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP)) == nullptr)
   #endif
   {
     std::printf("SDL_CreateWindow failed.\nSDL error: %s\n", SDL_GetError());

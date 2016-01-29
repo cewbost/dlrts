@@ -70,8 +70,7 @@ namespace
     //using std::unique_ptr;
     using unique_ptr<TileVision*[]>::unique_ptr;
     using unique_ptr<TileVision*[]>::operator=;
-    auto operator()(int x, int y, bool lighted = false)
-    ->decltype(this->operator[](0))
+    TileVision*& operator()(int x, int y, bool lighted = false)
     {
       return this->operator[]((x + y * Scenario::map_width) * 2 + (lighted? 1 : 0));
     }

@@ -10,9 +10,9 @@ lib_dir = lib/
 libraries = -lSDL2 -lGL -lHorde3D -lsquirrel -lsqstdlib -ldl
 def_c_options = -isystem./include/ -isystem./include/SDL2/ -pthread -std=c++11 -Wall -D_SQ64 -DSQUSEDOUBLE
 
-debug_binary = bin/debug/texgen
+debug_binary = bin/debug/dlrts
 debug_dir = bin/debug/
-release_binary = bin/release/texgen
+release_binary = bin/release/dlrts
 release_dir = bin/release/
 
 h3dsdk = Horde3D_SDK_1.0.0_Beta5/
@@ -30,14 +30,14 @@ ifeq ($(target),debug)
     obj_dir = obj/debug/
     l_options = -pthread
     c_options = $(def_c_options) -g
-	content_dir = bin/debug/
+	content_dir = bin/debug/content/
 	bin_dir = $(debug_dir)
 else
 	binary = $(release_binary)
     obj_dir = obj/release/
     l_options = -s -pthread
     c_options = $(def_c_options) -O3 -DNDEBUG
-	content_dir = bin/release/
+	content_dir = bin/release/content/
 	bin_dir = $(release_dir)
 endif
 
