@@ -28,16 +28,19 @@ $(asm_dir)%.s: $(src_dir)%.cpp
 $(bin_dir)libHorde3D.so:
 	cd $(h3dsdk) && cmake -G "Unix Makefiles" && $(MAKE)
 	cp -f $(h3dso) $(bin_dir)libHorde3D.so
+	cp -f $(h3dinc) include/horde3d.h
 
 $(lib_dir)libsquirrel.a:
 	mkdir -p include/squirrel
 	cd $(squirrel) && $(MAKE) sq64
 	cp -f $(sqlib) $(lib_dir)libsquirrel.a
 	cp -f $(sqstdlib) $(lib_dir)libsqstdlib.a
+	cp -f $(squirrel)include/*h include/squirrel/
 
 $(lib_dir)libSDL2.a:
 	@mkdir -p SDL2/build include/SDL2
 	cd SDL2/build && cmake -G "Unix Makefiles" ../$(SDL_dir) && make SDL2-static
+	cp -f SDL2/$(SDL_dir)include/* include/SDL2/
 	cp -f SDL2/build/libSDL2.a $(lib_dir)
 
 #rule for generating assembly code
