@@ -52,6 +52,6 @@ void main(void)
 {
     float closeness = max(normalPass.x, normalPass.y);
     closeness = max(closeness, normalPass.z);
-    gl_FragColor = vec4(1., 0., 0., pow(closeness, 7) * .5);
+    gl_FragColor = vec4(1., 0., 0., pow(closeness, 7.0) * .5);
     //gl_FragColor = vec4(1., 1., 1., 1.);
 }
